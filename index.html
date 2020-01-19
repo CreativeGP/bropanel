@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+        <title></title>
+        <script>
+         // WebSocket 接続を作成する
+         const socket = new WebSocket('ws://localhost:9002');
+
+         // 接続を開く
+         socket.addEventListener('open', function (event) {
+             socket.send('Hello Server!');
+         });
+
+         // メッセージを待ち受ける
+         socket.addEventListener('message', function (event) {
+             console.log('Message from server ', event.data);
+             document.body.innerText = event.data;
+         });
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
